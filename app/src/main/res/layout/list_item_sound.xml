@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Оборачиваем XML-файл в тег layout, чтобы использовать привязку данных -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Кнопка для воспроизведения звука -->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        tools:text="Sound name" />
+
+</layout>
