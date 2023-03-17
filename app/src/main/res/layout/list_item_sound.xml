@@ -4,10 +4,23 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Подключаем к макету данные -->
+    <data>
+
+        <!-- Подключаем к макету модель представления SoundViewModel -->
+        <variable
+            name="viewModel"
+            type="com.example.beatbox.SoundViewModel"/>
+
+    </data>
+
     <!-- Кнопка для воспроизведения звука -->
+    <!-- Используем привязку данных для получения заголовка кнопки -->
     <Button
         android:layout_width="match_parent"
         android:layout_height="120dp"
+        android:layout_marginHorizontal="5dp"
+        android:text="@{viewModel.title}"
         tools:text="Sound name" />
 
 </layout>
