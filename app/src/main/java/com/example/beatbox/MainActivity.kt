@@ -46,8 +46,9 @@ class MainActivity : AppCompatActivity() {
         // Функция для инициализации класса
         init {
 
-            // Подключаем к XML-макету модель представления (SoundViewModel) с помощью привязки данных (binding)
-            binding.viewModel = SoundViewModel()
+            // Подключаем к XML-макету модель представления (SoundViewModel) с помощью привязки данных (binding),
+            // передавая SoundViewModel экземпляр beatBox для управления звуками
+            binding.viewModel = SoundViewModel(beatBox)
         }
 
         // Функция для обновления данных, с которыми работает модель представления
