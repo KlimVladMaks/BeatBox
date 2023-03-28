@@ -16,9 +16,11 @@
 
     <!-- Кнопка для воспроизведения звука -->
     <!-- Используем привязку данных для получения заголовка кнопки -->
+    <!-- При нажатии на кнопку вызывается функция viewModel.onButtonClicked() -->
     <Button
         android:layout_width="match_parent"
         android:layout_height="120dp"
+        android:onClick="@{() -> viewModel.onButtonClicked()}"
         android:layout_marginHorizontal="5dp"
         android:text="@{viewModel.title}"
         tools:text="Sound name" />

@@ -44,6 +44,13 @@ class BeatBox(private val assets: AssetManager) {
         }
     }
 
+    // Функция для освобождения ресурсов SoundPool
+    fun release() {
+
+        // Освобождаем ресурсы SoundPool, удаляя загруженные звуки
+        soundPool.release()
+    }
+
     // Функция для загрузки списка звуков
     private fun loadSounds(): List<Sound> {
 

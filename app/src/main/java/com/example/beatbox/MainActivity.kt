@@ -38,6 +38,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Переопределяем функцию, вызываемую при уничтожении MainActivity
+    override fun onDestroy() {
+        super.onDestroy()
+
+        // Освобождаем ресурсы, удаляя загруженные звуки из SoundPool
+        beatBox.release()
+    }
+
     // Создаём Holder-класс, предназначенный для хранения представления одного элемента RecyclerView
     // и всех необходимых сопутсвующих данных
     private inner class SoundHolder(private val binding: ListItemSoundBinding):
