@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Стили приложения -->
+<resources>
+
+    <!-- Стили для кнопок вопроизведения звуков -->
+    <style name="BeatBoxButton">
+        <!-- Цвет фона -->
+        <item name="android:background">@color/dark_blue</item>
+    </style>
+
+    <!-- Стиль, наследуемый от стиля BeatBoxButton -->
+    <style name="BeatBoxButton.Strong">
+        <!-- Жирное выделенеие текста -->
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>
