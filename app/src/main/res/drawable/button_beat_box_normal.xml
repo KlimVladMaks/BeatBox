@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Создаём округлую форму для фона кнопки -->
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <!-- Цвет внутренней заливки -->
+    <solid
+        android:color="@color/red"/>
+
+</shape>
+

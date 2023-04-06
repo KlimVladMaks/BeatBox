@@ -4,15 +4,16 @@
 <resources>
 
     <!-- Стили для кнопок вопроизведения звуков -->
-    <style name="BeatBoxButton">
-        <!-- Цвет фона -->
-        <item name="android:background">@color/dark_blue</item>
-    </style>
+    <style name="BeatBoxButton" parent="Widget.MaterialComponents.Button">
 
-    <!-- Стиль, наследуемый от стиля BeatBoxButton -->
-    <style name="BeatBoxButton.Strong">
+        <!-- Фон элемента -->
+        <item name="android:background">@drawable/button_beat_box</item>
+
         <!-- Жирное выделенеие текста -->
         <item name="android:textStyle">bold</item>
+
     </style>
 
 </resources>
+
+
