@@ -1,12 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- Создаём круглую форму для фона нажатой кнопки -->
-<shape
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="oval">
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Цвет фнутренней заливки формы -->
-    <solid
-        android:color="@color/dark_red"/>
+    <!-- Элемент круг -->
+    <item>
 
-</shape>
+        <!-- Создаём круглую форму для фона нажатой кнопки -->
+        <shape
+            android:shape="oval">
+
+            <!-- Цвет фнутренней заливки формы -->
+            <solid
+                android:color="@color/dark_red"/>
+
+        </shape>
+
+    </item>
+
+    <!-- Элемент окружность -->
+    <item>
+
+        <!-- Создаём круглую форму -->
+        <shape
+            android:shape="oval">
+
+            <!-- Указываем параметры обводки -->
+            <stroke
+                android:width="4dp"
+                android:color="@color/orange"/>
+
+        </shape>
+
+    </item>
+
+</layer-list>
+
+
+
