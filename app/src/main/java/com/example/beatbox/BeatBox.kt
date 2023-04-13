@@ -15,6 +15,9 @@ private const val SOUNDS_FOLDER = "sample_sounds"
 // Создаём переменную, храняющую максимально допустимое количество воспроизводимых звуков
 private const val MAX_SOUNDS = 5
 
+// Создаём перемнную для хранения значения скорости воспроизведения звука
+var rate = 1.0f
+
 // Класс для работы со звуковыми активами
 // Класс прнимает экземпляр AssetManager для работы с активами
 class BeatBox(private val assets: AssetManager) {
@@ -40,7 +43,7 @@ class BeatBox(private val assets: AssetManager) {
 
         // Запускаем звук по его ID с помощью soundPool
         sound.soundId?.let {
-            soundPool.play(it, 1.0f, 1.0f, 1, 0, 1.0f)
+            soundPool.play(it, 1.0f, 1.0f, 1, 0, rate)
         }
     }
 

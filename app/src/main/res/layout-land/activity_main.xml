@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<!-- XML-макет для горизонтальной ориентации -->
+
 <!-- Оборачиваем XML-файл в тег layout, чтобы использовать привязку данных
      (После завершения обработки файла макета будет сгенерирован класс привязки, который можно
      использовать для привязки данных) -->
@@ -17,7 +19,7 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintHeight_percent="0.9"
+            app:layout_constraintHeight_percent="0.8"
             app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Ползунок для регулировки скорости воспроизведения звука -->
@@ -25,7 +27,7 @@
             android:id="@+id/seek_bar"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintHeight_percent="0.2"
             android:progress="1"
             android:max="5"
             android:thumbTint="@color/red"
@@ -36,4 +38,3 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
-

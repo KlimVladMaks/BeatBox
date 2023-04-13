@@ -3,6 +3,7 @@ package com.example.beatbox
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
+import android.widget.SeekBar
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -36,6 +37,35 @@ class MainActivity : AppCompatActivity() {
             // Подключаем адаптер, передавая ему список звуков
             adapter = SoundAdapter(beatBox.sounds)
         }
+
+        // Создаём слушатель, раегирующий на движение ползунка SeekBar
+        binding.seekBar.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
+
+            // Переопределяем функцию, вызываемую во вермя движения ползунка
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+
+                // Извлекаем значение ползунка
+                val value = progress.toFloat()
+
+                // Присваиваем значению скорости воспроизведения звука в BeatBox значение ползунка,
+                // предварительно преобразовав его к оптимальному значению
+                rate = when(value) {
+                    0f -> 0.5f
+                    1f -> 1f
+                    2f -> 1.5f
+                    3f -> 2f
+                    4f -> 2.5f
+                    5f -> 3f
+                    else -> 1.0f
+                }
+            }
+
+            // Переопределяем функцию, вызываемую при начале движения позунка
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+
+            // Переопределяем функцию, вызываемую при окончании движения позунка
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+        })
     }
 
     // Переопределяем функцию, вызываемую при уничтожении MainActivity
