@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.beatbox.databinding.ActivityMainBinding
@@ -13,15 +14,16 @@ import com.example.beatbox.databinding.ListItemSoundBinding
 // Создаём класс главной активити, которая первой запускается при открытии приложения
 class MainActivity : AppCompatActivity() {
 
-    // Создаём переменную для хранения экземпляра класса BeatBox
-    private lateinit var beatBox: BeatBox
+    // Лениво инициализируем экземпляр BeatBoxViewModel, привязывая его к данной активити
+    // Испльзуем фабрику BeatBoxViewModelFactory, чтобы передать BeatBoxViewModel объект assets со звуками приложения
+    private val beatBoxViewModel: BeatBoxViewModel by lazy {
+        val factory = BeatBoxViewModelFactory(assets)
+        ViewModelProvider(this, factory)[BeatBoxViewModel::class.java]
+    }
 
     // Переопределяем функцию, вызываемую при создании активити
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Создаём экземпляр класса BeatBox, передавая ему экземпляр assets
-        beatBox = BeatBox(assets)
 
         // Создаём экземпляр класса привязки, прикрепляя к нему XML-макет activity_main
         val binding: ActivityMainBinding =
@@ -35,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             layoutManager = GridLayoutManager(context, 3)
 
             // Подключаем адаптер, передавая ему список звуков
-            adapter = SoundAdapter(beatBox.sounds)
+            adapter = SoundAdapter(beatBoxViewModel.beatBox.sounds)
         }
 
         // Создаём слушатель, раегирующий на движение ползунка SeekBar
@@ -68,14 +70,6 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    // Переопределяем функцию, вызываемую при уничтожении MainActivity
-    override fun onDestroy() {
-        super.onDestroy()
-
-        // Освобождаем ресурсы, удаляя загруженные звуки из SoundPool
-        beatBox.release()
-    }
-
     // Создаём Holder-класс, предназначенный для хранения представления одного элемента RecyclerView
     // и всех необходимых сопутсвующих данных
     private inner class SoundHolder(private val binding: ListItemSoundBinding):
@@ -86,7 +80,7 @@ class MainActivity : AppCompatActivity() {
 
             // Подключаем к XML-макету модель представления (SoundViewModel) с помощью привязки данных (binding),
             // передавая SoundViewModel экземпляр beatBox для управления звуками
-            binding.viewModel = SoundViewModel(beatBox)
+            binding.viewModel = SoundViewModel(beatBoxViewModel.beatBox)
         }
 
         // Функция для обновления данных, с которыми работает модель представления
