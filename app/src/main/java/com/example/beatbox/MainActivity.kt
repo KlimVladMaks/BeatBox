@@ -1,5 +1,6 @@
 package com.example.beatbox
 
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
@@ -32,9 +33,16 @@ class MainActivity : AppCompatActivity() {
         // Добавляем к RecyclerView несколько свойств
         binding.recyclerView.apply {
 
-            // Указываем, что список должен содержать три колонки
-            // (context - это контекст приложения, требующийся для настройки GridLayoutManager)
-            layoutManager = GridLayoutManager(context, 3)
+            // Указываем количество колонок в списке в зависимости от ориентации устройства
+            layoutManager = when (resources.configuration.orientation) {
+
+                // Горизонтальная ориентация - 5 колонок
+                // (context - это контекст приложения, требующийся для настройки GridLayoutManager)
+                Configuration.ORIENTATION_LANDSCAPE -> GridLayoutManager(context, 5)
+
+                // Вертикальная ориентация - 3 колонки
+                else -> GridLayoutManager(context, 3)
+            }
 
             // Подключаем адаптер, передавая ему список звуков
             adapter = SoundAdapter(beatBoxViewModel.beatBox.sounds)
